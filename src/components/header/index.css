@@ -1,0 +1,44 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var( --header-color);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    z-index: 1000;
+    align-items: center;
+    display: flex;
+    padding: 3px;
+    height: 46px;
+}
+.navbar {
+    position: relative;
+    max-width: 100%;
+    width: 1250px;
+    margin: 0 auto;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 2px;
+}
+.navbar > .logo {
+    width: 32px;
+    height: 32px;
+}
+.opt-user {
+    background-color: blue;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    cursor: pointer;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+@media(max-width: 480px){
+    .navbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
