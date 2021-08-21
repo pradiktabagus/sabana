@@ -22,6 +22,7 @@ interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+  searchIcon?: boolean;
 }
 
 /**
@@ -32,6 +33,7 @@ export const Button = ({
   size = 'medium',
   backgroundColor,
   label,
+  searchIcon = false,
   ...props
 }: ButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
