@@ -15,7 +15,6 @@ header {
     max-width: 100%;
     width: 1250px;
     margin: 0 auto;
-    background-color: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
