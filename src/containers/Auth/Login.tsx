@@ -5,9 +5,7 @@ function login(props: any) {
     return (
         <div className="auth-page">
             <div className="auth-content">
-                <div className="auth-background">
-                    background
-                </div>
+                <div className="auth-background" />
                 <div className="login-content">
                     <div className="header-login">
                         <h2>Sabana</h2>
