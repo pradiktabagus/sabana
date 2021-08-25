@@ -5,6 +5,9 @@ function Register(props: any) {
     return (
         <div className="auth-page">
             register
+            <footer className="footer-auth">
+                <a href="https://me.nanali.co" target="_blank" rel="noopener noreferrer">about</a>
+            </footer>
         </div>
     )
 }
