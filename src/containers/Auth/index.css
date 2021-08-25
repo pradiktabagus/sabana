@@ -1,0 +1,19 @@
+.auth-page {
+    padding-top: var(--header-height);
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: red;
+}
+.footer-auth {
+    position: fixed;
+    bottom: 0;
+    height: 64px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

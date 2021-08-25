@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import "./index.css"
 import { HelperConstanta } from "../../helper/constanta"
 import Search from '../search'
+import Dropdown from '../dropdown'
 interface HeaderProps {
     openSidebar: () => void
 }
@@ -20,9 +21,12 @@ export const Index = (props: HeaderProps) => {
                 <button className="search-btn-mobile">
                     <img src="https://img.icons8.com/ios/50/000000/search--v1.png" alt="search"/>
                 </button>
-                <button className="opt-user">
-                    <img src="https://img.icons8.com/doodle/48/000000/user.png" alt="user"/>
-                </button>
+                <Dropdown overlay={['Login', 'Create Account']}>
+                    <button className="opt-user">
+                        <img src="https://img.icons8.com/doodle/48/000000/gender-neutral-user.png" alt="user"/>
+                        {/* <img src="https://img.icons8.com/doodle/48/000000/user.png" alt="user"/> */}
+                    </button>
+                </Dropdown>
             </nav>
         </header>
     )
