@@ -8,7 +8,7 @@ header {
     align-items: center;
     display: flex;
     padding: 3px;
-    height: 46px;
+    height: var(--header-height);
 }
 .navbar {
     position: relative;
@@ -20,24 +20,111 @@ header {
     align-items: center;
     padding: 3px 2px;
 }
-.navbar > .logo {
+.navbar .logo {
     width: 32px;
     height: 32px;
 }
+.burger-btn {
+    display: none;
+}
 .opt-user {
-    background-color: blue;
     width: 32px;
     height: 32px;
+    padding: 3px;
     border-radius: 100%;
     cursor: pointer;
+    background-color: white;
+    border: 1px solid rgba(61, 61, 61, 0.555);
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     -ms-border-radius: 100%;
     -o-border-radius: 100%;
 }
+.opt-user:hover {
+    background-color: var(--bg-hover);
+}
+.opt-user > img {
+    width: 100%;
+    height: 100%;
+}
+.search-btn-mobile {
+    display: none;
+}
+.title-apps {
+    display: none;
+}
 @media(max-width: 480px){
     .navbar {
         padding-left: 10px;
         padding-right: 10px;
+        justify-content: flex-end;
+    }
+    .navbar > * {
+        margin: 0 5px;
+    }
+    .navbar .icon-desk {
+        display: none;
+    }
+    .burger-btn {
+        display: block;
+        position: absolute;
+        left: 10px;
+    }
+    .burger-btn .logo {
+        position: unset;
+        left: unset;
+    }
+    .title-apps {
+        display: block;
+        font-size: 14pt;
+        letter-spacing: 2px;
+        font-weight: 600;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+}
+    .logo {
+        position: absolute;
+        left: 10px;
+    }
+    .search-bar {
+        display: none !important;
+    }
+    .search-btn-mobile {
+        display: block;
+        width: 32px;
+        height: 32px;
+        padding: 3px;
+        border-radius: 100%;
+        position: relative;
+        background-color: var(--bg-hover);
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+    }
+    .search-btn-mobile > img {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+    }
+    .search-btn-mobile:active {
+        background-color: var(--bg-hover);
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-hover);
+        color: var(--color-hover);
+        z-index: var(--z-elevate);
     }
 }

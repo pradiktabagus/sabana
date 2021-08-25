@@ -7,16 +7,18 @@ interface SearchProps {
     placeholder?: string,
     onClick?: () => void,
     searchBtn?: boolean,
+    className?: string
 }
 export const Search = ({
     primary = false,
     size= 'medium',
     placeholder,
     searchBtn = true,
+    className,
     ...props
 }: SearchProps) => {
     return (
-        <div className={`${searchBtn ? "tw_flex" : ''} tw_relative`}>
+        <div className={`${searchBtn ? "tw_flex" : ''} tw_relative ${className}`}>
             <input placeholder={placeholder} className={`sab-search sab-textfield`}/>
             {searchBtn ? (
             <button className="tw_absolute search-btn">
