@@ -12,12 +12,25 @@ function login(props: any) {
                         <h4>Hei what's up, i know you'll be back</h4>
                     </div>
                     <div className="login-group">
-                        <button>Google</button>
-                        <button>Twitter</button>
-                        <button>Github</button>
+                        <button type="submit" className="btn-auth">
+                            <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google"/>
+                            <span className="tw_text-lg tw_font-semibold">
+                                Google
+                            </span>
+                        </button>
+                        <button type="submit" className="btn-auth">
+                            <img src="https://img.icons8.com/fluency/48/000000/github.png" alt="github"/>
+                            <span className="tw_text-lg tw_font-semibold">
+                                Github
+                            </span>
+                        </button>
+                        <button type="submit" className="btn-auth">
+                            <span className="tw_text-lg tw_font-semibold">
+                                Sign in with your email
+                            </span>
+                        </button>
                     </div>
                     <div className="widget-signup">
-                        <p>By signing up, you agree to the Term of Service and Privacy Policy, including Cookie use</p>
                         <div>Don't have an account? Sign up</div>
                     </div>
                 </div>
@@ -30,7 +43,7 @@ function login(props: any) {
 }
 
 login.propTypes = {
-
+    props: PropTypes.any
 }
 
 export default login

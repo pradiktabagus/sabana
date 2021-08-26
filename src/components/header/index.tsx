@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import "./index.css"
 import { HelperConstanta } from "../../helper/constanta"
 import Search from '../search'
@@ -12,7 +11,9 @@ export const Index = (props: HeaderProps) => {
     return (
         <header>
             <nav className="navbar">
-                <img src={`${HelperConstanta.BASE_CDN}/v1629387080/sabana_nvpoct.svg`} alt="Sabana" className="logo icon-desk" />
+                <a href="/">
+                    <img src={`${HelperConstanta.BASE_CDN}/v1629387080/sabana_nvpoct.svg`} alt="Sabana" className="logo icon-desk"/>
+                </a>
                 <button onClick={openSidebar} className="burger-btn">
                     <img src={`${HelperConstanta.BASE_CDN}/v1629387080/sabana_nvpoct.svg`} alt="Sabana" className="logo" />
                 </button>

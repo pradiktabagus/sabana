@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import { useDispatch, useSelector } from "react-redux"
-import { bindActionCreators } from 'redux';
+// import { useDispatch, useSelector } from "react-redux"
+// import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
-import { actionCreators, State } from '../../state';
+// import { actionCreators, State } from '../../state';
 import Header from "../../components/header/index"
 import Login from "../Auth/Login"
 import Register from "../Auth/Register"

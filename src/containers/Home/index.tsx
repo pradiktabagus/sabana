@@ -39,7 +39,8 @@ function index({
 }
 
 index.propTypes = {
-
+    openSidebar: PropTypes.bool,
+    setOpenSidebar: PropTypes.func
 }
 
 export default index

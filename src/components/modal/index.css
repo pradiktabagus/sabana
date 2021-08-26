@@ -1,0 +1,40 @@
+:root {
+    --border-color: #939393;
+    --color-danger: #e6e6e6;
+
+    --border-color-primary: rgb(32, 218, 224);
+    --color-primary: rgb(32, 218, 224);
+
+    --hover-primary: rgba(27, 200, 206, 0.904);
+}
+.btn-modal {
+    min-width: 110px;
+    padding: 6px 15px;
+    border-width: 1px;
+    border-color: var(--border-color);
+    border-radius: 100px;
+    color: white;
+    transition: 0.3s ease-in;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    -webkit-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -ms-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+}
+.btn-danger {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger);
+}
+.btn-primary {
+    border-color: var(--border-color-primary);
+    background-color: var(--color-primary);
+}
+.btn-primary:hover{
+    background-color: var(--hover-primary);
+}
+.modal-content {
+    min-height: 300px;
+}
