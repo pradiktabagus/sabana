@@ -40,7 +40,7 @@ export const Modal = (props: ModalProps) => {
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="tw_fixed tw_z-10 tw_inset-0 tw_overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpen}>
-                <div className="tw_flex tw_items-end tw_justify-center tw_min-h-screen tw_pt-4 tw_px-4 tw_pb-20 tw_sm:block tw_sm:p-0">
+                <div className="tw_flex tw_items-end tw_justify-center tw_min-h-screen tw_pt-4 tw_px-4 tw_pb-20 sm:tw_block sm:tw_p-0">
                     <Transition.Child
                         as={Fragment}
                         enter="tw_ease-out tw_duration-300"
@@ -52,12 +52,12 @@ export const Modal = (props: ModalProps) => {
                     >
                         <Dialog.Overlay className="tw_fixed tw_inset-0 tw_bg-gray-500 tw_bg-opacity-75 tw_transition-opacity"/>
                     </Transition.Child>
-                    <span className="tw_hidden tw_sm:inline-block tw_sm:align-middle tw_sm:h-screen" aria-hidden="true">
+                    <span className="tw_hidden sm:tw_inline-block sm:tw_align-middle sm:tw_h-screen" aria-hidden="true">
                         &#8203;
                     </span>
                     <Transition.Child as={Fragment}
                         enter="tw_ease-out tw_duration-300"
-                        enterFrom="tw_opacity-0 tw_translate-y-4 tw_sm:translate-y-0 tw_sm:scale-95"
+                        enterFrom="tw_opacity-0 tw_translate-y-4 sm:tw_translate-y-0 tw_sm:scale-95"
                         enterTo="tw_opacity-100 tw_translate-y-0 tw_sm:scale-100"
                         leave="tw_ease-in tw_duration-200"
                         leaveFrom="tw_opacity-100 tw_translate-y-0 tw_sm:scale-100"
