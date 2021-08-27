@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
     --border-color: #939393;
     --color-danger: #e6e6e6;
