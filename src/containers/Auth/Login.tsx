@@ -47,7 +47,6 @@ function Login(props: any) {
                     </div>
                 </div>
             </div>
-            <ModalEmail visible={modal.email} onClose={showCloseModal} />
             <footer className="footer-auth">
                 <a href="https://me.nanali.co" target="_blank" rel="noopener noreferrer">about</a>
             </footer>
