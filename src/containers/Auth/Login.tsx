@@ -1,19 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import "./index.css"
-import Modal from '../../components/modal'
-function Login(props: any) {
-    const [modal, setModal] = useState({
-        email: false
-    })
-    const showCloseModal = (event: any) => {
-        event.preventDefault()
-        const { currentTarget } =  event
-        setModal(prevState => ({
-            ...prevState,
-            [currentTarget.name]: !modal.email
-        }))
-    }
+function login(props: any) {
     return (
         <div className="auth-page">
             <div className="auth-content">
@@ -36,7 +24,7 @@ function Login(props: any) {
                                 Github
                             </span>
                         </button>
-                        <button name="email" key="email" type="submit" className="btn-auth" onClick={showCloseModal}>
+                        <button type="submit" className="btn-auth">
                             <span className="tw_text-lg tw_font-semibold">
                                 Sign in with your email
                             </span>
@@ -47,7 +35,6 @@ function Login(props: any) {
                     </div>
                 </div>
             </div>
-            <ModalEmail visible={modal.email} onClose={showCloseModal} />
             <footer className="footer-auth">
                 <a href="https://me.nanali.co" target="_blank" rel="noopener noreferrer">about</a>
             </footer>
@@ -55,22 +42,8 @@ function Login(props: any) {
     )
 }
 
-interface EmailProp {
-    visible: boolean,
-    onClose: (event: any) => void
-}
-
-const ModalEmail = (props: EmailProp) => {
-    const {visible, onClose} = props
-    return(
-        <Modal name="email" visible={visible} useHeader={false} onClose={onClose}>
-            login modal
-        </Modal>
-    )
-}
-
-Login.propTypes = {
+login.propTypes = {
     props: PropTypes.any
 }
 
-export default Login
+export default login
