@@ -1,4 +1,4 @@
-import React, { Children, Fragment, useEffect, useRef, useState } from 'react'
+import React, {  Fragment, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from "@headlessui/react"
 import PropTypes from 'prop-types'
 import "./index.css"
@@ -7,20 +7,30 @@ interface ModalProps {
     classNameFooter?: string,
     title?: string,
     visible: boolean,
-    onClose: () => void,
+    onClose: (e: any) => void,
     children?: React.ReactNode,
-    footer?: React.ReactNode
+    footer?: React.ReactNode,
+    name: string,
+    footerPosition?: 'start'|'center'|'end',
+    useHeader?: boolean,
+    useFooter?: boolean,
 }
 interface DefaultProps {
-    onClick: () => void,
-    onCancel: () => void
+    onClick: (e: any) => void,
+    onCancel: (e: any) => void,
+    name?: string
 }
 const DefaultFooter = (props: DefaultProps) => {
-    const { onClick, onCancel} = props
+    const { onClick, onCancel, name } = props
+
+    const close = (event: any) => {
+        event.preventDefault()
+        onCancel(event)
+    }
     return (
         <Fragment>
-            <button className="btn-modal btn-danger" type="button" onClick={onCancel}>Cancel</button>
-            <button className="btn-modal btn-primary" type="button" onClick={onClick}>Ok</button>
+            <button key={name} name={name} className="btn-modal btn-danger" type="button" onClick={close}>Cancel</button>
+            <button key={name} name={name} className="btn-modal btn-primary" type="button" onClick={onClick}>Ok</button>
         </Fragment>
     )
 }
@@ -29,7 +39,10 @@ export const Modal = (props: ModalProps) => {
         visible = true,
         children,
         title = "New Modal", 
-        footer = <DefaultFooter onCancel={props.onClose} onClick={props.onClose} /> 
+        footer = <DefaultFooter name={props.name} onCancel={props.onClose} onClick={props.onClose} />,
+        footerPosition = 'end',
+        useHeader = true,
+        useFooter = true 
     } = props
     const [open, setOpen] = useState(true)
     const cancelButtonRef = useRef(null)
@@ -37,10 +50,11 @@ export const Modal = (props: ModalProps) => {
     useEffect(() => {
         setOpen(visible)
     }, [visible])
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="tw_fixed tw_z-10 tw_inset-0 tw_overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpen}>
-                <div className="tw_flex tw_items-end tw_justify-center tw_min-h-screen tw_pt-4 tw_px-4 tw_pb-20 tw_sm:block tw_sm:p-0">
+                <div className="tw_flex tw_items-end tw_justify-center tw_min-h-screen tw_pt-4 tw_px-4 tw_pb-20 tw_text-center sm:tw_block sm:tw_p-0">
                     <Transition.Child
                         as={Fragment}
                         enter="tw_ease-out tw_duration-300"
@@ -63,19 +77,25 @@ export const Modal = (props: ModalProps) => {
                         leaveFrom="tw_opacity-100 tw_translate-y-0 sm:tw_scale-100"
                         leaveTo="tw_opacity-0 tw_translate-y-4 sm:tw_translate-y-0 sm:tw_scale-95"
                     >
-                        <div className={`${props.className} tw_relative modal-content tw_w-1/2 tw_inline-block tw_align-bottom tw_bg-white tw_rounded-lg tw_overflow-hidden tw_shadow-xl tw_transform tw_transition-all tw_sm:my-8 tw_sm:align-middle tw_sm:max-w-lg tw_sm:w-full`}>
-                            <div className="title-modal tw_bg-gray-50 tw_p-2">
-                                {title}
-                            </div>
-                            {/* title */}
+                        <div className={`${props.className} modal-content tw_inline-block tw_align-bottom tw_bg-white tw_rounded-lg tw_text-left tw_overflow-hidden tw_shadow-xl tw_transform tw_transition-all sm:tw_my-8 sm:tw_align-middle sm:tw_max-w-lg sm:tw_w-full`}>
+                            { useHeader 
+                                ?   <div className="title-modal tw_bg-gray-50 tw_p-2">
+                                        {title}
+                                    </div>
+                                : null}
+                            
                             {/* body */}
                             <div className="tw_bg-white tw_px-4 tw_pt-5 tw_pb-4 sm:tw_p-6 sm:tw_pb-4">
                                 {children}
                             </div>
                             {/* footer */}
-                            <div className="tw_justify-end tw_w-full tw_bottom-0 tw_absolute tw_bg-gray-50 tw_px-4 tw_py-3 tw_sm:px-6 tw_sm:flex tw_sm:flex-row-reverse">
-                                {footer}
-                            </div>
+                            { useFooter 
+                                ?   <div className="tw_justify-end tw_w-full tw_bottom-0 tw_absolute tw_bg-gray-50 tw_px-4 tw_py-3 tw_sm:px-6 tw_sm:flex tw_sm:flex-row-reverse">
+                                        {footer}
+                                    </div>
+                                : null
+                            }
+                           
                         </div>
                     </Transition.Child>
                 </div>
