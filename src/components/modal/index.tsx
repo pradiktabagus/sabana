@@ -50,18 +50,18 @@ export const Modal = (props: ModalProps) => {
                         leaveFrom="tw_opacity-100"
                         leaveTo="tw_opacity-0"
                     >
-                        <Dialog.Overlay className="tw_fixed tw_inset-0 tw_bg-gray-500 tw_bg-opacity-75 tw_transition-opacity"/>
+                        <Dialog.Overlay className="tw_fixed tw_inset-0 tw_bg-gray-500 tw_bg-opacity-75 tw_transition-opacity" />
                     </Transition.Child>
-                    <span className="tw_hidden tw_sm:inline-block tw_sm:align-middle tw_sm:h-screen" aria-hidden="true">
+                    <span className="tw_hidden sm:tw_inline-block sm:tw_align-middle sm:tw_h-screen"  aria-hidden="true">
                         &#8203;
                     </span>
                     <Transition.Child as={Fragment}
                         enter="tw_ease-out tw_duration-300"
-                        enterFrom="tw_opacity-0 tw_translate-y-4 tw_sm:translate-y-0 tw_sm:scale-95"
-                        enterTo="tw_opacity-100 tw_translate-y-0 tw_sm:scale-100"
+                        enterFrom="tw_opacity-0 tw_translate-y-4 sm:tw_translate-y-0 sm:tw_scale-95"
+                        enterTo="tw_opacity-100 tw_translate-y-0 sm:tw_scale-100"
                         leave="tw_ease-in tw_duration-200"
-                        leaveFrom="tw_opacity-100 tw_translate-y-0 tw_sm:scale-100"
-                        leaveTo="tw_opacity-0 tw_translate-y-4 tw_sm:translate-y-0 tw_sm:scale-95"
+                        leaveFrom="tw_opacity-100 tw_translate-y-0 sm:tw_scale-100"
+                        leaveTo="tw_opacity-0 tw_translate-y-4 sm:tw_translate-y-0 sm:tw_scale-95"
                     >
                         <div className={`${props.className} tw_relative modal-content tw_w-1/2 tw_inline-block tw_align-bottom tw_bg-white tw_rounded-lg tw_overflow-hidden tw_shadow-xl tw_transform tw_transition-all tw_sm:my-8 tw_sm:align-middle tw_sm:max-w-lg tw_sm:w-full`}>
                             <div className="title-modal tw_bg-gray-50 tw_p-2">
@@ -69,7 +69,7 @@ export const Modal = (props: ModalProps) => {
                             </div>
                             {/* title */}
                             {/* body */}
-                            <div className="tw_bg-white tw_px-4 tw_pt-5 tw_pb-4 tw_sm:p-6 tw_sm:pb-4">
+                            <div className="tw_bg-white tw_px-4 tw_pt-5 tw_pb-4 sm:tw_p-6 sm:tw_pb-4">
                                 {children}
                             </div>
                             {/* footer */}
