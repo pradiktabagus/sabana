@@ -64,10 +64,18 @@ interface EmailProps  {
     onClose: (event: any) => void
 }
 const ModalEmail = (props: EmailProps) => {
-    const{ visible, onClose} = props
+    const { visible, onClose } = props
     return (
-        <Modal visible={visible} onClose={onClose} name="email">
-            moal login
+        <Modal 
+            visible={visible} 
+            onClose={onClose} 
+            name="email" 
+            useFooter={false} 
+            useHeader={false}
+        >
+            <div>
+                <div></div>
+            </div>
         </Modal>
     )
 }

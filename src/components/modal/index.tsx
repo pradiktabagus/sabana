@@ -29,8 +29,8 @@ const DefaultFooter = (props: DefaultProps) => {
     }
     return (
         <Fragment>
-            <button key={name} name={name} className="btn-modal btn-danger" type="button" onClick={close}>Cancel</button>
-            <button key={name} name={name} className="btn-modal btn-primary" type="button" onClick={onClick}>Ok</button>
+            <button key={name} name={name} className="tw_w-full tw_inline-flex tw_justify-center tw_rounded-md tw_border tw_border-transparent tw_shadow-sm tw_px-4 tw_py-2 tw_bg-red-600 tw_text-base tw_font-medium tw_text-white hover:tw_bg-red-700 focus:tw_outline-none focus:tw_ring-2 focus:tw_ring-offset-2 focus:tw_ring-red-500 sm:tw_ml-3 sm:tw_w-auto sm:tw_text-sm" type="button" onClick={onClick}>Ok</button>
+            <button key={name} name={name} className="tw_mt-3 tw_w-full tw_inline-flex tw_justify-center tw_rounded-md tw_border tw_border-gray-300 tw_shadow-sm tw_px-4 tw_py-2 tw_bg-white tw_text-base tw_font-medium tw_text-gray-700 hover:tw_bg-gray-50 focus:tw_outline-none focus:tw_ring-2 focus:tw_ring-offset-2 focus:tw_ring-indigo-500 sm:tw_mt-0 sm:tw_ml-3 sm:tw_w-auto sm:tw_text-sm" type="button" onClick={close}>Cancel</button>
         </Fragment>
     )
 }
@@ -89,7 +89,7 @@ export const Modal = (props: ModalProps) => {
                             </div>
                             {/* footer */}
                             { useFooter 
-                                ?   <div className="tw_justify-end tw_w-full tw_bottom-0 tw_absolute tw_bg-gray-50 tw_px-4 tw_py-3 tw_sm:px-6 tw_sm:flex tw_sm:flex-row-reverse">
+                                ?   <div className="tw_w-full tw_bottom-0 tw_absolute tw_bg-gray-50 tw_px-4 tw_py-3 sm:tw_px-6 sm:tw_flex sm:tw_flex-row-reverse">
                                         {footer}
                                     </div>
                                 : null
