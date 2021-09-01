@@ -8,6 +8,9 @@ import Header from "../../components/header/index"
 import Login from "../Auth/Login"
 import Register from "../Auth/Register"
 import Home from "../Home/index"
+import Post from "../Posts/Index"
+import Search from "../Search/index"
+import Profile from "../Profile/Index"
 function App() {
   // const dispatch = useDispatch()
   // const { Login } = bindActionCreators(actionCreators, dispatch)
@@ -32,6 +35,15 @@ function App() {
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/post">
+              <Post />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="/me">
+              <Profile />
             </Route>
           </Switch>
         </div>

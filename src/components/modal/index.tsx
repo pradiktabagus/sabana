@@ -50,7 +50,6 @@ export const Modal = (props: ModalProps) => {
     useEffect(() => {
         setOpen(visible)
     }, [visible])
-
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="tw_fixed tw_z-10 tw_inset-0 tw_overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpen}>
@@ -77,7 +76,7 @@ export const Modal = (props: ModalProps) => {
                         leaveFrom="tw_opacity-100 tw_translate-y-0 sm:tw_scale-100"
                         leaveTo="tw_opacity-0 tw_translate-y-4 sm:tw_translate-y-0 sm:tw_scale-95"
                     >
-                        <div className={`${props.className} modal-content tw_inline-block tw_align-bottom tw_bg-white tw_rounded-lg tw_text-left tw_overflow-hidden tw_shadow-xl tw_transform tw_transition-all sm:tw_my-8 sm:tw_align-middle sm:tw_max-w-lg sm:tw_w-full`}>
+                        <div className={`${props.className} modal-content tw_inline-block tw_align-bottom tw_bg-white tw_rounded-lg tw_text-left tw_overflow-hidden tw_shadow-xl tw_transform tw_transition-all sm:tw_my-8 sm:tw_align-middle tw_w-64 tw_min-w-0 xs:tw_min-w-full md:tw_min-w-0`}>
                             { useHeader 
                                 ?   <div className="title-modal tw_bg-gray-50 tw_p-2">
                                         {title}
@@ -95,7 +94,6 @@ export const Modal = (props: ModalProps) => {
                                     </div>
                                 : null
                             }
-                           
                         </div>
                     </Transition.Child>
                 </div>

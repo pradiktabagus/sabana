@@ -3,11 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      xs: "360px",
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      xs: { min: "320px", max: "480px" },
+      sm: { min: "481x", max: "768px" },
+      md: { min: "769px", max: "1024px" },
+      lg: { min: "1025px", max: "1279px" },
+      xl: { min: "1280px", max: "1535px" },
+      "2xl": { min: "1536px" },
     },
   },
   variants: {
