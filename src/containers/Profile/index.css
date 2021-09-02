@@ -4,3 +4,17 @@
     min-height: 100vh;
     width: 100%;
 }
+.profile-cover {
+    min-height: 350px;
+    height: 350px;
+    background-color: green;
+}
+.profile-banner {
+    background-color: white;
+    height: 100%;
+    margin-top: 50px;
+}
+.profile-picture {
+    width: 100px;
+    height: 100px;
+}
