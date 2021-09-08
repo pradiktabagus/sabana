@@ -1,6 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import "./index.css"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ItemArticle } from "../../components/ItemArticle"
+import "./index.css";
 interface HomeProps {
     openSidebar: boolean,
     setOpenSidebar: () => void
@@ -10,7 +11,7 @@ function index({
     setOpenSidebar 
 }: HomeProps) {
     return (
-        <React.Fragment>
+        <div className="home-page">
             <div className={`sidebar-content ${openSidebar ? "open" : ""}`} onClick={() => openSidebar ? setOpenSidebar() : null} >
                 <div className="inner-sidebar">
                     <div className="header-sidebar">
@@ -26,15 +27,20 @@ function index({
                 </div>
             </div>
             <div className="articles">
-                <div className="widget-article">
+                <div className="widget-article tw_p-2 tw_py-3">
                     <h3>Posts</h3>
                     <select name="sort" id="sort" defaultValue="news">
                         <option value="news">News</option>
                     </select>
                 </div>
-                <div className="feeds">list articles</div>
+                <div className="feeds tw_p-2">
+                    <ItemArticle />
+                    <ItemArticle />
+                    <ItemArticle />
+                    <ItemArticle />
+                </div>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

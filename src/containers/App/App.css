@@ -13,12 +13,13 @@
   display: flex;
 }
 .sidebar-content {
-  min-width: 300px;
   padding-top: var(--header-height);
+  min-width: 300px;
 }
 .articles {
-  flex: 1;
   padding-top: var(--header-height);
+  flex: 1;
+  width: calc(100% - 300px);
 }
 .header-sidebar {
   display: none;
