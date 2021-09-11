@@ -1,0 +1,19 @@
+.item-article {
+    display: flex;
+    flex-direction: column;
+}
+.img-thumbnail-item {
+    width: 24px;
+    height: 24px;
+}
+.widget-bookmark {
+    width: 24px;
+    height: 24px;
+}
+.thumbnail-article {
+    width: 1500px;
+}
+.widget-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
