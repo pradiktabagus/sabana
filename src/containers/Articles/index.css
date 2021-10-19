@@ -1,0 +1,4 @@
+.article-page {
+    padding-top: var(--header-height);
+    position: relative;
+}

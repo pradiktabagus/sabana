@@ -3,7 +3,7 @@ import "./index.css"
 export const ItemArticle = (props: any) => {
     return (
         <div className="item-article sm:tw-w-full tw_mb-12 tw_relative">
-            <div className="tw_flex-auto">
+            <div className="tw_flex-auto tw_pr-4 xs:tw_pr-1">
                 <div className="tw_flex tw_items-center tw_pb-2">
                     <img src="https://miro.medium.com/fit/c/60/60/1*LGG3Tb0NHy_LctSxasGFDw.jpeg" alt="thumbnail user" className="tw_mr-2 img-thumbnail-item" />
                     <div className="tw_flex tw_text-sm tw_font-semibold" >

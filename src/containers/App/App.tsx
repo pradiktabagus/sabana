@@ -11,6 +11,7 @@ import Home from "../Home/index"
 import Post from "../Posts/Index"
 import Search from "../Search/index"
 import Profile from "../Profile/Index"
+import Articles from "../Articles/Index";
 function App() {
   // const dispatch = useDispatch()
   // const { Login } = bindActionCreators(actionCreators, dispatch)
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/me">
               <Profile />
+            </Route>
+            <Route path="/articles">
+              <Articles />
             </Route>
           </Switch>
         </div>
