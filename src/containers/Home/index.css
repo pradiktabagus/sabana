@@ -3,7 +3,7 @@
     min-height: 100vh;
     width: 100%;
     display: flex;
-    max-width: 1024px;
+    max-width: var(--side-width);
     margin: 0 auto;
 }
 .feeds {

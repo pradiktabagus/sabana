@@ -1,3 +1,6 @@
+:root {
+  --side-width: 1280px;
+}
 .App {
   text-align: center;
 }
