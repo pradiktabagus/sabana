@@ -40,7 +40,7 @@ export const Modal = (props: ModalProps) => {
         children,
         title = "New Modal", 
         footer = <DefaultFooter name={props.name} onCancel={props.onClose} onClick={props.onClose} />,
-        footerPosition = 'end',
+        // footerPosition = 'end',
         useHeader = true,
         useFooter = true 
     } = props
