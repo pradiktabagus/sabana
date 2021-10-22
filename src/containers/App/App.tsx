@@ -12,6 +12,7 @@ import Post from "../Posts/Index"
 import Search from "../Search/index"
 import Profile from "../Profile/Index"
 import Articles from "../Articles/Index";
+import NotFound from "../NotFoundPage/404"
 function App() {
   // const dispatch = useDispatch()
   // const { Login } = bindActionCreators(actionCreators, dispatch)
@@ -43,11 +44,14 @@ function App() {
             <Route path="/search">
               <Search />
             </Route>
-            <Route path="/me">
+            <Route path="/:username">
               <Profile />
             </Route>
-            <Route path="/articles">
+            <Route path="/:username/:title">
               <Articles />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>
