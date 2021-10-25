@@ -1,7 +1,9 @@
 :root {
     --sidebar-left-display: block;
+    --sidebar-right-display: block;
     --sidebar-left-row-end: initial;
     --sidebar-left-width: 100%;
+    --sidebar-right-widht: 100%;
 
     --radius: 0.375rem;
     --layout: 4rem 7fr 3fr;
@@ -79,6 +81,14 @@
     -moz-border-radius: 0.375rem;
     -ms-border-radius: 0.375rem;
     -o-border-radius: 0.375rem;
+}
+.article-card-secondary {
+    background: #ffffff;
+    color: #202020;
+    box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.05);
+}
+.branded-7 {
+    border-top: 2rem solid #3b49df;
 }
 .article-header {
     overflow-wrap: anywhere;
@@ -233,6 +243,15 @@
     -moz-border-radius: 0.375rem;
     -ms-border-radius: 0.375rem;
     -o-border-radius: 0.375rem;
+}
+.article-sidebar-right {
+    display: var(--sidebar-right-display);
+    width: var(--sidebar-right-widht);
+}
+.article-sticky {
+    position: static;
+    position: -webkit-sticky;
+    top: calc(var(--header-height) - 0);
 }
 @media (min-width: 768px){
     .article-page {
