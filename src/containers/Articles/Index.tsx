@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import "./index.css"
 function Articles(props: any) {
     return (
-        <div className="article-page">
+        <div className="article-layout article-layout-3-col article-page">
             <aside className="article-sidebar-left">
                 <div className="article-action">
                     <div className="article-action__inner">
@@ -83,13 +83,22 @@ So, next, you will find a list of 10 gamified platforms that will make the proce
                             </div>
                         </section>
                     </article>
-                    <section>section</section>
                 </div>
             </main>
             <aside className="article-sidebar-right">
                 <div className="article-sticky tw_grid tw_gap-4 tw_break-words">
                     <div className="article-card article-card-secondary tw_p-4 tw_pt-0 tw_gap-4 tw_grid branded-7">
-                        <div></div>
+                        <div className="tw_-mt-4">
+                            <a className="tw_flex" href="/me">
+                                <span className="profile-avatar profile-avatar-xl tw_mr-2 tw_flex-shrink-0">
+                                    <img className="avatar-image" src="https://res.cloudinary.com/practicaldev/image/fetch/s--KuBZqWtD--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/423659/dc3b6f89-025f-4db3-9611-fb3ca9c68113.jpg" alt="profile" />
+                                </span>
+                                <span className="color-link tw_mt-5 subtitle-2">Pradiktabagus</span>
+                            </a>
+                        </div>
+                        <div className="follow">
+                            <button></button>
+                        </div>
                     </div>
                 </div>
             </aside>
