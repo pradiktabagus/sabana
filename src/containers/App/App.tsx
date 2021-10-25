@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 // import { useDispatch, useSelector } from "react-redux"
 // import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
 // import { actionCreators, State } from '../../state';
 import Header from "../../components/header/index"
 import Login from "../Auth/Login"
@@ -12,7 +12,6 @@ import Post from "../Posts/Index"
 import Search from "../Search/index"
 import Profile from "../Profile/Index"
 import Articles from "../Articles/Index";
-import NotFound from "../NotFoundPage/404"
 function App() {
   // const dispatch = useDispatch()
   // const { Login } = bindActionCreators(actionCreators, dispatch)
@@ -44,14 +43,14 @@ function App() {
             <Route path="/search">
               <Search />
             </Route>
-            <Route path="/:username">
+            <Route path="/user/:username">
               <Profile />
             </Route>
-            <Route path="/:username/:title">
+            <Route path="/read/:username/:title">
               <Articles />
             </Route>
             <Route path="*">
-              <NotFound />
+              <Redirect to="/"  />
             </Route>
           </Switch>
         </div>

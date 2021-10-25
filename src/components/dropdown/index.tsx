@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react'
 import "./index.css"
 import { Menu, Transition } from "@headlessui/react"
+import { Link } from "react-router-dom"
 interface DropdownProps {
-    overlay: string[],
+    overlay: any[],
     primary?: boolean,
     size?: 'small' | 'medium' | 'large',
     onClick?: () => void,
@@ -21,7 +22,7 @@ export const Dropdown = ({
     size= 'medium',
     className,
     children = "Button",
-    overlay = ['Menu 1', 'Menu 2', 'Menu 3'],
+    overlay = [{name: 'Menu 1', pathname: "/"}, {name: 'Menu 2', pathname: "/"}, {name: 'Menu 3', pathname: "/"}],
     placement = 'right',
     textPlacement = 'left',
     dropdownClassName,
@@ -50,14 +51,14 @@ export const Dropdown = ({
                             <Menu.Item>
                                 {({ active }) => (
                                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                                    <a
-                                    className={classNames(
-                                        active ? 'tw_bg-gray-100 tw_text-gray-900' : 'tw_text-gray-700',
-                                        'tw_block tw_px-4 tw_py-2 tw_text-sm tw_cursor-pointer'
-                                    )}
+                                    <Link to={over.pathname}
+                                        className={classNames(
+                                            active ? 'tw_bg-gray-100 tw_text-gray-900' : 'tw_text-gray-700',
+                                            'tw_block tw_px-4 tw_py-2 tw_text-sm tw_cursor-pointer'
+                                        )}
                                     >
-                                        {over}
-                                    </a>
+                                        {over.name}
+                                    </Link>
                                 )}
                             </Menu.Item>
                         ))}

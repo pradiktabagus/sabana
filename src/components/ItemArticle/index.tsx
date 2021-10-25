@@ -2,19 +2,19 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import "./index.css"
 export const ItemArticle = (props: any) => {
-    return (
+    return (    
         <Link to={{ 
-            pathname: `/pradiktabagus/sampoerna`, 
+            pathname: `/read/pradiktabagus/sampoerna`, 
         }}>
             <div className="item-article sm:tw-w-full tw_mb-12 tw_relative">
                 <div className="tw_flex-auto tw_pr-4 xs:tw_pr-1">
                     <div className="tw_flex tw_items-center tw_pb-2">
                         <img src="https://miro.medium.com/fit/c/60/60/1*LGG3Tb0NHy_LctSxasGFDw.jpeg" alt="thumbnail user" className="tw_mr-2 img-thumbnail-item" />
                         <div className="tw_flex tw_text-sm tw_font-semibold" >
-                            <a href="">John Doe</a>
+                            <a href="/me">John Doe</a>
                             <div className="tw_flex tw_ml-1">
                                 <h4>in</h4>
-                                <a href="" className="tw_ml-1">Gohank</a>
+                                <a href="/me" className="tw_ml-1">Gohank</a>
                             </div>
                         </div>
                     </div>

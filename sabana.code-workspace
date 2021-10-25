@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "..\\SabanaJs"
+			"path": "../ts-redux-react-realworld-example-app"
 		}
 	],
 	"settings": {}

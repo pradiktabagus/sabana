@@ -7,6 +7,7 @@ import Dropdown from '../dropdown'
 interface HeaderProps {
     openSidebar: () => void
 }
+const OverlayItem = [ {name: "Profile", pathname: "/user/@pradiktabagus"}, {name: "Login", pathname: "/login"}, {name: "Create Account", pathname: "/register"}]
 export const Index = (props: HeaderProps) => {
     const { openSidebar } = props
     return (
@@ -26,7 +27,7 @@ export const Index = (props: HeaderProps) => {
                 <Link className="search-btn-mobile" to="/post">
                     <img src="https://img.icons8.com/ios/50/000000/sign-up.png" alt="search"/>
                 </Link>
-                <Dropdown overlay={['Profile','Login', 'Create Account']}>
+                <Dropdown overlay={OverlayItem}>
                     <button className="opt-user">
                         <img src="https://img.icons8.com/doodle/48/000000/gender-neutral-user.png" alt="user"/>
                         {/* <img src="https://img.icons8.com/doodle/48/000000/user.png" alt="user"/> */}
