@@ -86,7 +86,13 @@ So, next, you will find a list of 10 gamified platforms that will make the proce
                     <section>section</section>
                 </div>
             </main>
-            <aside>profile</aside>
+            <aside className="article-sidebar-right">
+                <div className="article-sticky tw_grid tw_gap-4 tw_break-words">
+                    <div className="article-card article-card-secondary tw_p-4 tw_pt-0 tw_gap-4 tw_grid branded-7">
+                        <div></div>
+                    </div>
+                </div>
+            </aside>
         </div>
     )
 }
@@ -96,3 +102,5 @@ Articles.propTypes = {
 }
 
 export default Articles
+
+//function validate email

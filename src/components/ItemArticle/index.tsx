@@ -11,10 +11,10 @@ export const ItemArticle = (props: any) => {
                     <div className="tw_flex tw_items-center tw_pb-2">
                         <img src="https://miro.medium.com/fit/c/60/60/1*LGG3Tb0NHy_LctSxasGFDw.jpeg" alt="thumbnail user" className="tw_mr-2 img-thumbnail-item" />
                         <div className="tw_flex tw_text-sm tw_font-semibold" >
-                            <a href="">John Doe</a>
+                            <a href="/me">John Doe</a>
                             <div className="tw_flex tw_ml-1">
                                 <h4>in</h4>
-                                <a href="" className="tw_ml-1">Gohank</a>
+                                <a href="/me" className="tw_ml-1">Gohank</a>
                             </div>
                         </div>
                     </div>
