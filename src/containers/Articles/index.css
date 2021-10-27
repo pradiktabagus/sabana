@@ -3,7 +3,7 @@
     --sidebar-right-display: block;
     --sidebar-left-row-end: initial;
     --sidebar-left-width: 100%;
-    --sidebar-right-widht: 100%;
+    --sidebar-right-width: 100%;
 
     --radius: 0.375rem;
     --layout: 100%;
@@ -252,12 +252,11 @@
 }
 .article-sidebar-right {
     display: var(--sidebar-right-display);
-    width: var(--sidebar-right-widht);
+    width: var(--sidebar-right-width);
 }
 .article-sticky {
-    position: static;
-    position: -webkit-sticky;
-    top: calc(var(--header-height) - 0);
+    position: sticky;
+    top: calc(var(--header-height) + 0.5rem);
 }
 .profile-avatar {
     display: inline-block;
@@ -295,17 +294,17 @@
 }
 @media (min-width: 768px){
     .article-layout-3-col {
-        --layout: 4fr 5fr;
+        --layout: var(--sidebar-left-width) var(--layout-content-width);
         --layout-sidebar-left-row-end: span 2;
-        --layout-sidebar-left-width: 2fr;
-        --layout-sidebar-right-width: 5fr;
+        --sidebar-left-width: 2fr;
+        --sidebar-right-width: 5fr;
         --layout-content-width: 5fr;
     }
     .article-layout {
         --layout-gap: 0.5rem;
-        --layout-sidebar-left-width: 4rem;
-        --layout: 4rem 1fr;
-        --layout-sidebar-left-row-end: span 2;
+        --sidebar-left-width: 4rem;
+        --layout: var(--sidebar-left-width) 1fr;
+        --sidebar-left-row-end: span 2;
     }
     .article-page {
         grid-template-columns: var(--layout);
@@ -316,7 +315,7 @@
         border-top-right-radius: 0;
         padding: 0;
         padding-bottom: 0;
-        background: #fcfcfc;
+        background: transparent;
         display: grid;
         gap: 1.5rem;
         position: sticky;
@@ -338,7 +337,11 @@
     }
 }
 @media (min-width: 1024px){
-    .article-page {
-        grid-template-columns: 4rem 7fr 3fr;
+    .article-layout {
+        --layout-gap: 1rem;
+        --sidebar-right-width: 3fr;
+        --sidebar-left-row-end: initial;
+        --layout-content-width: 7fr;
+        --layout: var(--sidebar-left-width) var(--layout-content-width) var(--sidebar-right-width);
     }
 }
