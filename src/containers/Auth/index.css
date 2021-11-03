@@ -73,21 +73,64 @@
 .widget-signup {
     margin-top: 3px;
 }
+.icon_form {
+    padding: 5px;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+}
+.icon_form img {
+    height: 100%;
+    width: 100%;
+}
+.field-input {
+    min-height: 40px;
+}
+.inner__register {
+    padding-top: 40px;
+}
+.btn-register {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 0.3rem;
+    background: #34BE82;
+    border-color: #34BE82;
+    -webkit-transition: 0.5s ease-in;
+    -moz-transition: 0.5s ease-in;
+    -ms-transition: 0.5s ease-in;
+    -o-transition: 0.5s ease-in;
+    transition: 0.5s ease-in;
+}
+.btn-register:hover {
+    background: #2ea370;
+    border-color: #2ea370;
+}
+.inner_error {
+    width: 100%;
+    background: rgb(230, 230, 230);
+    padding: 0.5rem;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
 @media(max-width: 480px){
     .auth-content {
         flex-direction: column-reverse;
         overflow: auto;
-        height: auto;
+        height: 100%;
     }
     .auth-background {
         flex: none;
         min-width: 100%;
         height: 200px;
+        display: none;
     }
     .login-content {
         min-width: 100%;
         min-height: 200px;
-        height: auto;
         padding: 35px;
     }
     .header-login > h2 {
@@ -124,8 +167,5 @@
     }
     .widget-signup > div {
         font-size: 12pt;
-    }
-    .footer-auth {
-        position: relative;
     }
 }

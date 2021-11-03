@@ -7,34 +7,70 @@
 
     --hover-primary: rgba(27, 200, 206, 0.904);
 }
-.btn-modal {
-    min-width: 110px;
-    padding: 6px 15px;
-    border-width: 1px;
-    border-color: var(--border-color);
-    border-radius: 100px;
-    color: white;
-    transition: 0.3s ease-in;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -ms-border-radius: 100px;
-    -o-border-radius: 100px;
-    -webkit-transition: 0.3s ease-in;
-    -moz-transition: 0.3s ease-in;
-    -ms-transition: 0.3s ease-in;
-    -o-transition: 0.3s ease-in;
+.alert-enter {
+    opacity: 0;
+    transform: scale(0.9);
 }
-.btn-danger {
-    border-color: var(--color-danger);
-    background-color: var(--color-danger);
+.alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
 }
-.btn-primary {
-    border-color: var(--border-color-primary);
-    background-color: var(--color-primary);
+.alert-exit {
+    opacity: 1;
 }
-.btn-primary:hover{
-    background-color: var(--hover-primary);
+.alert-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+    -webkit-transition: opacity 300ms, transform 300ms;
+    -moz-transition: opacity 300ms, transform 300ms;
+    -ms-transition: opacity 300ms, transform 300ms;
+    -o-transition: opacity 300ms, transform 300ms;
 }
-.modal-content {
-    min-height: 300px;
+.mask-modal {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1001;
+    padding: 1rem;
+    overflow: hidden;
+}
+.modal {
+    width: 100%;
+    min-height: 400px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    position: relative;
+    border-radius: 4px;
+    z-index: 1002;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.modal-header, .modal-body, .modal-footer {
+    padding: 1rem 0.5rem;
+}
+.btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .modal {
+        width: 500px;
+    }
 }

@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../ts-redux-react-realworld-example-app"
+		},
+		{
+			"path": "../technicaltest"
 		}
 	],
 	"settings": {}
