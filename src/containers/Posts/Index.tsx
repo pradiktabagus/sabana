@@ -5,11 +5,6 @@ import { Editor } from '@tinymce/tinymce-react'
 import { HelperConstanta } from '../../helper/constanta'
 function Index(props: any) {
     const editorRef = useRef(null)
-    const log = () => { 
-        if(editorRef.current){
-            console.log(editorRef.current)
-        }
-    }
     const EditorChange = (e:any) => {
         const {value} = e.target
         console.log(value)

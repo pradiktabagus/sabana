@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from "react-router-dom"
 import "./index.css"
 import Modal from '../../components/modal'
+import { LoginController } from '../../api/controller/authController'
 function Login(props: any) {
     const [modal, setModal] = useState({
         email: false
@@ -65,6 +66,23 @@ interface EmailProps  {
 }
 const ModalEmail = (props: EmailProps) => {
     const { visible, onClose } = props
+    const [body, setBody] = useState({
+        username: null,
+        password: null
+    })
+    function onHandleChange(event:any){
+        const { name, value } = event.target
+        setBody(prevState => ({...prevState, [name]: value}))
+    }
+
+    function handleSubmit(event:any){
+        event.preventDefault()
+        LoginController({body: body}).then(response => {
+            console.log(response);
+        }).catch(err => {
+            console.log(err);            
+        })
+    }
     return (
         <Modal 
             visible={visible} 
@@ -74,18 +92,18 @@ const ModalEmail = (props: EmailProps) => {
             useHeader={false}
         >
             <div className="inner__register">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="tw_flex tw_items-center tw_mt-4 tw_relative tw_pl-2 tw_pr-2">
                         <div className="icon_form">
                             <img alt="user" src="https://img.icons8.com/doodle/48/000000/user.png"/>
                         </div>
-                        <input type="text" name="username" placeholder="Username" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
+                        <input onChange={onHandleChange} type="text" name="username" placeholder="Username" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
                     </div>
                     <div className="tw_flex tw_items-center tw_mt-4 tw_relative tw_pl-2 tw_pr-2">
                         <div className="icon_form">
                             <img alt="password" src="https://img.icons8.com/office/40/000000/key.png"/>
                         </div>
-                        <input type="password" name="password" placeholder="Password" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
+                        <input onChange={onHandleChange}  type="password" name="password" placeholder="Password" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
                     </div>
                     <div className="tw_fixed tw_bottom-0 tw_right-0 tw_pb-3">
                         <button type="submit" className="btn btn-register">Login</button>
