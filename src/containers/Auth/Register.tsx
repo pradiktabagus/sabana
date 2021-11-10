@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from "react-router-dom"
 import Modal from '../../components/modal'
@@ -70,18 +70,9 @@ interface ModalProps {
 const ModalEmail = (props: ModalProps) => {
     const { visible, onClose } = props
     const [isRegistered, setRegistered] = useState(false)
-    const [body, setBody] = useState({
-        email: null,
-        username: null,
-        password: null
-    })
     const [ loading, setLoading ] = useState(false)
     const [error, setError] = useState([])
     const { register, handleSubmit, formState: {errors} } = useForm()
-    function onHandleChange(event:any){
-        const { name, value } = event.target
-        setBody(prevState => ({...prevState, [name]: value}))
-    }
 
     function onSubmit(body:any) {
         setLoading(true)
@@ -98,6 +89,7 @@ const ModalEmail = (props: ModalProps) => {
     }
 
     const handleEmailValidation = (email: string) => {
+        // eslint-disable-next-line no-useless-escape
         const isValidEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
         return isValidEmail
     }
