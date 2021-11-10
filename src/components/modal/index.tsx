@@ -2,14 +2,6 @@ import React, { useEffect, useState, Fragment, useRef } from 'react'
 import styled from "styled-components"
 import Portal from "./portal"
 import "./index.css"
-interface ModalProps {
-    className?: string,
-    open: boolean,
-    onClose: () => void,
-    children: React.ReactChild,
-    useHeader?: boolean,
-    useFooter?: boolean,
-}
 
 const Backdrop = styled.div`
     position: fixed;
@@ -80,7 +72,6 @@ export default function Modal({
 }: any){
     const [active, setActive] = useState(false)
     const backdrop = useRef<any>(null)
-    console.log("modal");
     
     useEffect(() => {
         const { current } = backdrop

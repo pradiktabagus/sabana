@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import "./index.css"
 import Modal from '../../components/modal'
 import { LoginController } from '../../api/controller/authController'
@@ -66,6 +66,7 @@ interface EmailProps  {
 }
 const ModalEmail = (props: EmailProps) => {
     const { visible, onClose } = props
+    const [isSuccess, setSuccess] = useState(false)
     const [body, setBody] = useState({
         username: null,
         password: null
@@ -79,11 +80,14 @@ const ModalEmail = (props: EmailProps) => {
         event.preventDefault()
         LoginController({body: body}).then(response => {
             console.log(response);
+            setSuccess(true)
         }).catch(err => {
             console.log(err);            
         })
     }
-    return (
+    return isSuccess 
+        ? <Redirect to="/" />
+        : (
         <Modal 
             open={visible} 
             onClose={onClose} 
