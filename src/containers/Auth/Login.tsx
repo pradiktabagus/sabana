@@ -85,9 +85,8 @@ const ModalEmail = (props: EmailProps) => {
     }
     return (
         <Modal 
-            visible={visible} 
+            open={visible} 
             onClose={onClose} 
-            name="email" 
             useFooter={false} 
             useHeader={false}
         >
@@ -105,7 +104,7 @@ const ModalEmail = (props: EmailProps) => {
                         </div>
                         <input onChange={onHandleChange}  type="password" name="password" placeholder="Password" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
                     </div>
-                    <div className="tw_fixed tw_bottom-0 tw_right-0 tw_pb-3">
+                    <div className="tw_fixed tw_bottom-0 tw_right-0 tw_left-0 tw_flex tw_justify-center  tw_pb-3">
                         <button type="submit" className="btn btn-register">Login</button>
                     </div>
                 </form>

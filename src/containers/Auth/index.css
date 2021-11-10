@@ -90,10 +90,6 @@
     padding-top: 40px;
 }
 .btn-register {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 0.3rem;
     background: #34BE82;
     border-color: #34BE82;
     -webkit-transition: 0.5s ease-in;
@@ -101,6 +97,11 @@
     -ms-transition: 0.5s ease-in;
     -o-transition: 0.5s ease-in;
     transition: 0.5s ease-in;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    border-radius: 1rem;
 }
 .btn-register:hover {
     background: #2ea370;

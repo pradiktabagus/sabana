@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from "react-router-dom"
-import "./index.css"
 import Modal from '../../components/modal'
 import { RegisterController } from '../../api/controller/authController'
 import LoadingIndicator from "../../components/loading/Loading"
+import "./index.css"
 function Register(props: any) {
     const [modal, setModal] = useState({
         email: false
@@ -37,7 +37,7 @@ function Register(props: any) {
                                 Github
                             </span>
                         </button>
-                        <button type="submit" className="btn-auth" onClick={() => showCloseModal({name: "email"})}>
+                        <button type="submit" className="btn-auth" onClick={()=> showCloseModal({name: "email"})}>
                             <span className="tw_text-lg tw_font-semibold">
                                 Sign up with your email
                             </span>
@@ -60,13 +60,13 @@ function Register(props: any) {
 Register.propTypes = {
     props: PropTypes.any
 }
+export default Register
 
-interface EmailProps  {
-    visible: boolean,
+interface ModalProps {
+    visible: boolean
     onClose: () => void
 }
-
-const ModalEmail = (props: EmailProps) => {
+const ModalEmail = (props: ModalProps) => {
     const { visible, onClose } = props
     const [isRegistered, setRegistered] = useState(false)
     const [body, setBody] = useState({
@@ -84,26 +84,29 @@ const ModalEmail = (props: EmailProps) => {
     function handleSubmit(event:any){
         event.preventDefault()
         setLoading(true)
-        RegisterController({body}).then(response => {
-            setRegistered(true)
-        }).then(() => onClose()).catch(err => {
-            const {error} = err
-            setError(error)
-        }).finally(() => setLoading(false));
+        try {
+            RegisterController({body}).then(response => {
+                setRegistered(true)
+            }).then(() => onClose()).catch(err => {
+                const {error} = err
+                setError(error)
+            }).finally(() => setLoading(false));
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return isRegistered 
     ? <Redirect to="/login" /> 
     :(
-        <Modal 
-            visible={visible} 
+        <Modal
+            open={visible} 
             onClose={onClose} 
-            name="email" 
             useFooter={false} 
             useHeader={false}
         >
             <div className="inner__register">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="tw_relative">
                     <div className="tw_flex tw_items-center tw_mt-4 tw_relative tw_pl-2 tw_pr-2">
                         <div className="icon_form">
                             <img alt="user" src="https://img.icons8.com/doodle/48/000000/user.png"/>
@@ -122,7 +125,7 @@ const ModalEmail = (props: EmailProps) => {
                         </div>
                         <input onChange={onHandleChange} type="password" name="password" placeholder="Password" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" />
                     </div>
-                    <div className="tw_fixed tw_bottom-0 tw_right-0 tw_pb-3">
+                    <div className="tw_fixed tw_bottom-0 tw_right-0 tw_left-0 tw_flex tw_justify-center tw_pb-3">
                         <button type="submit" className="btn btn-register">Register</button>
                     </div>
                 </form>
@@ -136,7 +139,7 @@ const ModalEmail = (props: EmailProps) => {
                         <div className="notification-error tw_mt-4 tw_p-4">
                             <div className="inner_error">
                                 <ul>
-                                    {error.map((err: any) => (
+                                    {error?.map((err: any) => (
                                         <li>{err.message}</li>
                                     ))}
                                 </ul>
@@ -148,5 +151,3 @@ const ModalEmail = (props: EmailProps) => {
         </Modal>
     )
 }
-
-export default Register
