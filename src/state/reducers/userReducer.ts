@@ -1,9 +1,11 @@
 import { Action } from "../actions/userAction"
 import { ActionType } from "../types/index"
-const initialSTate = ""
-const reducer =  (state: String = initialSTate, action: Action) => {
+const initialSTate = {
+    isLogin: false
+}
+const reducer =  (state: any = initialSTate, action: Action) => {
     switch(action.type){
-        case ActionType.LOGIN:
+        case ActionType.USER:
             return action.payload
         default:
             return state

@@ -1,10 +1,11 @@
 import { ActionType } from "../types"
 import { Dispatch } from "redux"
 import { Action} from "../actions/userAction"
-export const Login = (user: string) => {
+
+export const CurrentUser = (user: any) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
-            type: ActionType.LOGIN,
+            type: ActionType.USER,
             payload: user
         })
     }

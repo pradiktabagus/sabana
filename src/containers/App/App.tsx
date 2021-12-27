@@ -1,26 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-// import { useDispatch, useSelector } from "react-redux"
-// import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector,  } from "react-redux"
+import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
-// import { actionCreators, State } from '../../state';
+import { actionCreators, State } from '../../state';
 import Header from "../../components/header/index"
-import Login from "../Auth/Login"
+import LoginComponent from "../Auth/Login"
 import Register from "../Auth/Register"
 import Home from "../Home/index"
 import Post from "../Posts/Index"
 import Search from "../Search/index"
 import Profile from "../Profile/Index"
 import Articles from "../Articles/Index";
+import { WhoMe } from '../../api/controller/authController';
 function App() {
-  // const dispatch = useDispatch()
-  // const { Login } = bindActionCreators(actionCreators, dispatch)
-  // const User = useSelector((state: State) => state.User)
+  const dispatch = useDispatch()
+  const { CurrentUser } = bindActionCreators(actionCreators, dispatch)
   const [openSidebar, setOpenSidebar] = useState(false)
+  const User = useSelector((state: State) => state.User)
+  const { isLogin } = User
 
   const handleSidebar = () => {
     setOpenSidebar(!openSidebar)
   }
+
+  useEffect(() => {
+    let mount = true
+    if(mount){
+      const getData = async() => {
+        try {
+          await WhoMe().then(res => {
+            const {data} = res
+            CurrentUser({
+              ...User,
+              ...data,
+            })
+          }).catch(err => {
+            console.error(err);
+          })
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      if(isLogin) {
+        getData()
+      }
+    }
+    return () => {
+      mount = false
+    }
+  }, [isLogin, CurrentUser, User])
   return (
     <Router>
       <div className="relative body-content">
@@ -32,7 +61,7 @@ function App() {
               <Home openSidebar={openSidebar} setOpenSidebar={handleSidebar} />
             </Route>
             <Route path="/login">
-              <Login />
+              <LoginComponent />
             </Route>
             <Route path="/register">
               <Register />

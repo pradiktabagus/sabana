@@ -6,6 +6,7 @@ import { RegisterController } from '../../api/controller/authController'
 import LoadingIndicator from "../../components/loading/Loading"
 import { useForm } from "react-hook-form"
 import "./index.css"
+import Footer from './Footer'
 function Register(props: any) {
     const [modal, setModal] = useState({
         email: false
@@ -51,9 +52,7 @@ function Register(props: any) {
                 </div>
             </div>
             <ModalEmail visible={modal.email} onClose={() => showCloseModal({name: "email"})} />
-            <footer className="footer-auth">
-                <a href="https://me.nanali.co" target="_blank" rel="noopener noreferrer">about</a>
-            </footer>
+            <Footer />
         </div>
     )
 }
@@ -70,9 +69,20 @@ interface ModalProps {
 const ModalEmail = (props: ModalProps) => {
     const { visible, onClose } = props
     const [isRegistered, setRegistered] = useState(false)
+    const [isVisible, setVisible] = useState(false)
     const [ loading, setLoading ] = useState(false)
     const [error, setError] = useState([])
     const { register, handleSubmit, formState: {errors} } = useForm()
+
+    useEffect(() => {
+        let mount = true
+        if(mount){
+            setVisible(visible)
+            if(!visible){
+                setError([])
+            }
+        }
+    }, [visible])
 
     function onSubmit(body:any) {
         setLoading(true)
@@ -105,7 +115,7 @@ const ModalEmail = (props: ModalProps) => {
     ? <Redirect to="/login" /> 
     :(
         <Modal
-            open={visible} 
+            open={isVisible} 
             onClose={onClose} 
             useFooter={false} 
             useHeader={false}
@@ -116,7 +126,6 @@ const ModalEmail = (props: ModalProps) => {
                         <div className="icon_form">
                             <img alt="user" src="https://img.icons8.com/doodle/48/000000/user.png"/>
                         </div>
-                        {/* <input onChange={onHandleChange} type="text" name="username" placeholder="Username" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" /> */}
                         <input 
                             {...register('username', {
                                 required: "Username cannot be empty",
@@ -132,7 +141,6 @@ const ModalEmail = (props: ModalProps) => {
                         <div className="icon_form">
                             <img alt="email" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-email-cyber-security-kiranshastry-lineal-color-kiranshastry-1.png"/>
                         </div>
-                        {/* <input onChange={onHandleChange} type="email" name="email" placeholder="Email" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" /> */}
                         <input 
                             {...register('email', {
                                 required: 'Email cannot be empty',
@@ -145,7 +153,6 @@ const ModalEmail = (props: ModalProps) => {
                         <div className="icon_form">
                             <img alt="password" src="https://img.icons8.com/office/40/000000/key.png"/>
                         </div>
-                        {/* <input onChange={onHandleChange} type="password" name="password" placeholder="Password" className="field-input focus:tw_ring-indigo-500 focus:tw_border-indigo-500 tw_block tw_w-full tw_pl-9 tw_pr-12 xs:tw_text-sm tw_border-gray-500 tw_rounded-md tw_border" /> */}
                         <input  
                             {...register('password', {
                                 required: true,

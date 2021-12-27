@@ -97,7 +97,7 @@ So, next, you will find a list of 10 gamified platforms that will make the proce
                             </a>
                         </div>
                         <div className="follow">
-                            <button></button>
+                            <button type="button">Ikuti</button>
                         </div>
                     </div>
                 </div>

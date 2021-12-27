@@ -1,6 +1,6 @@
 import { ActionType } from "../types/index"
 interface UserAction {
-    type: ActionType.LOGIN,
+    type: ActionType.USER,
     payload: string
 }
 

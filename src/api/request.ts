@@ -6,12 +6,17 @@ interface configProps {
     params?: any,
     data?: any,
     cancelToken?: any,
+    contentType: 'application/json' | 'application/xml'
 }
 async function request(config:configProps){
     try {
+        let token = localStorage.getItem(HelperConstanta.jwt_token) || ""
         const response = await axios({
             baseURL: HelperConstanta.BASE_URL,
-            headers: { "content-type": "application/json", },
+            headers: {
+                'Content-Type': config.contentType,
+                'token': token
+            },
             ...config
         });
         return await Promise.resolve(response.data);

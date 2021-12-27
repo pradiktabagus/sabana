@@ -29,7 +29,7 @@ function index({
             <div className="articles">
                 <div className="widget-article tw_p-2 tw_py-3">
                     <h3>Posts</h3>
-                    <select name="sort" id="sort" defaultValue="news">
+                    <select title="sort" name="sort" id="sort" defaultValue="news">
                         <option key={1} value="news">News</option>
                     </select>
                 </div>
