@@ -24,24 +24,25 @@ function App() {
     setOpenSidebar(!openSidebar)
   }
 
+  const getData = async() => {
+    try {
+      await WhoMe().then(res => {
+        const {data} = res
+        CurrentUser({
+          ...User,
+          ...data,
+        })
+      }).catch(err => {
+        console.error(err);
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
     let mount = true
     if(mount){
-      const getData = async() => {
-        try {
-          await WhoMe().then(res => {
-            const {data} = res
-            CurrentUser({
-              ...User,
-              ...data,
-            })
-          }).catch(err => {
-            console.error(err);
-          })
-        } catch (error) {
-          console.error(error);
-        }
-      }
       if(isLogin) {
         getData()
       }
@@ -49,7 +50,7 @@ function App() {
     return () => {
       mount = false
     }
-  }, [isLogin, CurrentUser, User])
+  }, [isLogin])
   return (
     <Router>
       <div className="relative body-content">

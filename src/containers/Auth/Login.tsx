@@ -98,7 +98,6 @@ const ModalEmail = (props: EmailProps) => {
             setError([])
             LoginController({body: body}).then(response => {
                 const {data} = response
-                setData(data)
                 localStorage.setItem(HelperConstanta.jwt_token, data.token)
             }).then(() => {
                CurrentUser({
