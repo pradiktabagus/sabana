@@ -29,17 +29,20 @@ export const Index = (props: HeaderProps) => {
                 </button>
                 <div className="title-apps"><Link to="/">Sabana</Link></div>
                 <Search className="search-bar" placeholder="Search..."/>
-                <button className="search-btn-mobile">
+                <button type="button" className="search-btn-mobile">
                     <img src="https://img.icons8.com/ios/50/000000/search--v1.png" alt="search"/>
                 </button>
                 <Link className="search-btn-mobile" to="/post">
                     <img src="https://img.icons8.com/ios/50/000000/sign-up.png" alt="search"/>
                 </Link>
-                <Dropdown overlay={OverlayItem.filter(x => x.active === true)}>
-                    <button className="opt-user" type="button">
-                        <img src="https://img.icons8.com/doodle/48/000000/gender-neutral-user.png" alt="user"/>
-                    </button>
-                </Dropdown>
+                <div className="widget-profile">
+                    { User?.isLogin && <Link to="/post" className="btn_create-post">Create</Link> }
+                    <Dropdown overlay={OverlayItem.filter(x => x.active === true)}>
+                        <button className="opt-user" type="button">
+                            <img src={User?.isLogin ? User?.image :"https://img.icons8.com/doodle/48/000000/gender-neutral-user.png"} alt="user"/>
+                        </button>
+                    </Dropdown>
+                </div>
             </nav>
         </header>
     )
