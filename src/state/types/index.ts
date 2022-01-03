@@ -1,4 +1,5 @@
 export enum ActionType {
     LOGIN = "LOGIN",
-    USER = "USER"
+    USER = "USER",
+    FEED_PAGE = "FEED_PAGE"
 }

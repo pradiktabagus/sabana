@@ -81,23 +81,23 @@
     overflow: hidden;
     z-index: 1200;
     padding-top: 0;
-    transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
     -moz-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
     -o-transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
+    transform: translateX(-100%);
     -webkit-transition: transform 0.3s ease-out;
     -moz-transition: transform 0.3s ease-out;
     -ms-transition: transform 0.3s ease-out;
     -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
   }
   .sidebar-content.open {
-    transform: translateX(0);
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
+    transform: translateX(0);
   }
   .backdrop {
     z-index: 1100;
@@ -105,11 +105,11 @@
     width: 100%;
     height: 100vh;
     position: absolute;
-    transition: 0.2s ease-in;
     -webkit-transition: 0.2s ease-in;
     -moz-transition: 0.2s ease-in;
     -ms-transition: 0.2s ease-in;
     -o-transition: 0.2s ease-in;
+    transition: 0.2s ease-in;
 }
   .sidebar-content > .inner-sidebar {
     width: 280px;

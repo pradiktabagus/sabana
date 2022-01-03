@@ -2,10 +2,11 @@ import React from 'react'
 import { Link,  } from "react-router-dom"
 import "./index.css"
 export const ItemArticle = (props: any) => {
+    const {title, description, lastData} = props
     return (    
         <Link to={{ 
             pathname: `/read/pradiktabagus/sampoerna`, 
-        }}>
+        }} ref={lastData}>
             <div className="item-article sm:tw-w-full tw_mb-7 tw_relative">
                 <div className="tw_flex-auto tw_pr-4 xs:tw_pr-1">
                     <div className="tw_flex tw_items-center tw_pb-2">
@@ -20,10 +21,10 @@ export const ItemArticle = (props: any) => {
                     </div>
                     <div className="tw_flex tw_flex-col tw_mb-9">
                         <h3 className="tw_text-base tw_font-bold tw_mb-2">
-                            Introducing Courier - The Information Superhighway Between Mobile & server
+                            {title}
                         </h3>   
                         <desc className="tw_text-sm tw_font-light tw_text-gray-500 tw_max-h-20 tw_overflow-hidden tw_overflow-ellipsis">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            {description}
                         </desc>
                     </div>
                     <div className="tw_flex tw_justify-between tw_items-center tw_px-2 tw_absolute tw_w-full widget-item tw_bottom-0">
@@ -33,7 +34,7 @@ export const ItemArticle = (props: any) => {
                         </span>
                     </div>
                 </div>
-                <a href="https://miro.medium.com/fit/c/300/300/1*UiPdiNyIlFSoz6S-mNZglA.jpeg" className="tw_flex-auto thumbnail-article">
+                <a href="https://miro.medium.com/fit/c/300/300/1*UiPdiNyIlFSoz6S-mNZglA.jpeg" className="thumbnail-article">
                     <img src="https://miro.medium.com/fit/c/300/300/1*UiPdiNyIlFSoz6S-mNZglA.jpeg" alt="thumbnail article" />
                 </a>
             </div>

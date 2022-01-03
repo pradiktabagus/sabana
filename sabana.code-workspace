@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../node-express-realworld-example-app"
+		},
+		{
+			"path": "../api-sabana"
 		}
 	],
 	"settings": {}

@@ -8,3 +8,15 @@ export function PostArticle (props: any){
         data: props.body
     })
 }
+interface feedProps {
+    offset: number
+    limit: number
+}
+export function Feeds(props: feedProps){
+    const { offset, limit } = props
+    return request({
+        method: 'get',
+        url: `/api/article/feeds?limit=${limit}&offset=${offset}`,
+        contentType: 'application/json',
+    })
+}
