@@ -6,7 +6,10 @@ const initialSTate = {
 const reducer =  (state: any = initialSTate, action: Action) => {
     switch(action.type){
         case ActionType.FEED_PAGE:
-            return action.payload
+            return {
+                ...state,
+                page: action.payload
+            }
         default:
             return state
     }

@@ -29,7 +29,13 @@
   .lds-ellipsis div:nth-child(4) {
     left: 56px;
     animation: lds-ellipsis3 0.6s infinite;
-  }
+    -webkit-animation: lds-ellipsis3 0.6s infinite;
+}
+  .loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
   @keyframes lds-ellipsis1 {
     0% {
       transform: scale(0);

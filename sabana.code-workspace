@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "../api-sabana"
+		},
+		{
+			"path": "../technicaltest"
 		}
 	],
 	"settings": {}
