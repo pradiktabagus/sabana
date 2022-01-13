@@ -82,7 +82,7 @@ function App() {
             <Route path="/user/:username">
               <Profile />
             </Route>
-            <Route path="/read/:username/:title">
+            <Route path="/read/:username/:article">
               <Articles />
             </Route>
             <Route path="*">

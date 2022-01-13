@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import "./index.css"
+import { useParams } from 'react-router-dom'
+import { ArticleController } from '../../api/controller/articleController'
+import LoadingIndicator from "../../components/loading/Loading"
 function Articles(props: any) {
-    return (
+    let { article }: any = useParams()
+    const [loading, setLoading] = useState(false)
+    const [data, setData] = useState<any>(null)
+    useEffect(() => {
+        let mount = true
+        if(mount){
+            setLoading((true))
+            ArticleController({slug: article})
+            .then(res => {
+                setData(res.data)
+            }).catch(err => {
+                console.error("error: ", err)
+            }).finally(() => setLoading(false))
+        }
+        return () => {
+            mount = false
+        }
+    }, [article])
+    return loading ? <LoadingIndicator /> : (
         <div className="article-layout article-layout-3-col article-page">
             <aside className="article-sidebar-left">
                 <div className="article-action">
@@ -38,11 +59,11 @@ function Articles(props: any) {
                                         </div>
                                         <div className="tw_pl-3 tw_flex-1">
                                             <a className="color-link tw_font-bold" href="/me">Uncle muthu</a>
-                                            <p className="tw_text-xs tw_text-gray-500">Posted on 21-20-2002 by <a href="/me">nanali.co</a> </p>
+                                            <p className="tw_text-xs tw_text-gray-500">Posted {data?.createdAt} by <a href="/me">{data?.author}</a> </p>
                                         </div>
                                     </div>
                                 </div>
-                                <h1 className="tw_text-3xl md:text-4xl lg:tw_text-5xl tw_font-bold tw_leading-tight tw_mb-2">Learn Programming</h1>
+                                <h1 className="tw_text-3xl md:text-4xl lg:tw_text-5xl tw_font-bold tw_leading-tight tw_mb-2">{data?.title}</h1>
                                 <div className="article-tags">
                                     <a href="/tags" className="article-tag">
                                         <span className="prefix-tag">#</span>webdev
@@ -55,10 +76,7 @@ function Articles(props: any) {
                         </header>
                         <div className="article-main">
                             <div className="article-body text-style">
-                            Online learning has come a long way in the last few years. There are interactive courses, tons of online tutorials, and one of my personal favorite ways to practice coding is through fun free games!
-While a coding game alone probably isn’t going to teach you everything you need to know about coding, these free fun games can be a really incredible way to practice the skills you’re learning.
-They are found to be one of the best methods to acquire programming skills while having little to no previous experience. Gamification allows you to learn by playing, which is a distinctive practice to avoid burnout.
-So, next, you will find a list of 10 gamified platforms that will make the process of learning programming an exciting journey.
+                                {data?.content}
                             </div>
                         </div>
                         <section className="text-padding tw_mb-4 tw_border-t-2 tw_border-0 tw_border-solid tw_border-gray-200">

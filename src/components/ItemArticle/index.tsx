@@ -2,10 +2,10 @@ import React from 'react'
 import { Link,  } from "react-router-dom"
 import "./index.css"
 export const ItemArticle = (props: any) => {
-    const {title, description, lastData} = props
+    const {title, description, lastData, slug, author} = props
     return (    
         <Link to={{ 
-            pathname: `/read/pradiktabagus/sampoerna`, 
+            pathname: `/read/${author}/${slug}`, 
         }} ref={lastData}>
             <div className="item-article sm:tw-w-full tw_mb-7 tw_relative">
                 <div className="tw_flex-auto tw_pr-4 xs:tw_pr-1">

@@ -1,10 +1,8 @@
-import React, {useEffect, useState, useCallback, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { ItemArticle } from "../../components/ItemArticle"
 import  { useFeeds } from "../../fetchController"
-import { useDispatch, useSelector,  } from "react-redux"
-import { bindActionCreators } from 'redux';
-import { actionCreators, State } from '../../state';
+import LoadingIndicator from "../../components/loading/Loading"
 import "./index.css";
 interface HomeProps {
     openSidebar: boolean,
@@ -14,38 +12,44 @@ function Index({
     openSidebar = false, 
     setOpenSidebar 
 }: HomeProps) {
-    const dispatch = useDispatch()
-    const { UpdatePage } = bindActionCreators(actionCreators, dispatch)
-    const Feeds = useSelector((state: State) => state.Feeds)
-    const { page } = Feeds
     const [ dataSource, setDataSource ] = useState([])
-    const { ListData, error, loading, hasMore } = useFeeds({ offset: page, limit: 10})
+    const [ halaman, setHalaman ] = useState(1)
+    const { ListData, error, loading, hasMore } = useFeeds({ offset: halaman, limit: 20})
+    const [ lastData, setLastData ] = useState(null)
 
-
-    const observer = useRef<any>()
-    const lastData = useCallback(
-        (node) => {
-          if (loading) return;
-          if (observer.current) observer.current.disconnect();
-          observer.current = new IntersectionObserver((ent: any) => {
-            if (ent[0].isIntersecting && hasMore) {
-              UpdatePage(page + 1);
+    const observer = useRef<any>(
+        new IntersectionObserver(
+            (entries) => {
+                const first = entries[0]
+                if(first.isIntersecting){
+                    setHalaman(prevState => prevState + 1)
+                }
             }
-          });
-          if (node) observer.current.observe(node);
-        },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [loading, hasMore]
-      );
+        )
+    )
+    useEffect(() => {
+        const currentElem = lastData
+        const currentObs = observer.current
+        if(currentElem) {
+            currentObs.observe(currentElem)
+        }
+        return () => {
+            if(currentElem){
+                currentObs.unobserve(currentElem)
+            }
+        }
+    }, [lastData])
+
     useEffect(() => {
         let mount = true
-        if(mount){
+        if (mount){
             setDataSource(ListData)
         }
         return () => {
             mount = false
         }
     }, [ListData])
+
     return (
         <div className="home-page">
             <div className={`sidebar-content ${openSidebar ? "open" : ""}`} onClick={() => openSidebar ? setOpenSidebar() : null} >
@@ -72,11 +76,12 @@ function Index({
                 <div className="feeds tw_p-2">
                     {dataSource?.map((item, index) => {
                         if (dataSource.length === index + 1) {
-                            return <ItemArticle {...item} lastData={lastData} />;
+                            return <ItemArticle {...item} lastData={setLastData} />;
                         } else {
                             return <ItemArticle {...item} lastData={null} />;
                         }
                     })}
+                    {loading && <LoadingIndicator />}
                 </div>
             </div>
         </div>

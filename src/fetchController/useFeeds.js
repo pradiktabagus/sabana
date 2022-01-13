@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Feeds } from "../api/controller/articleController";
 
-export default function useFeeds(props) {
-  const { offset, limit } = props;
+export default function useFeeds({ offset, limit }) {
   const [loading, setLoading] = useState(false);
   const [ListData, setListData] = useState([]);
   const [error, setError] = useState(null);
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setListData([]);
   }, []);
+
   useEffect(() => {
     let mount = true;
     if (mount) {
@@ -22,16 +22,18 @@ export default function useFeeds(props) {
           setListData((prevState) => {
             return [...new Set([...prevState, ...article])];
           });
-          setHasMore(article.Search.length > 0);
+          setHasMore(article.length > 0);
         })
         .catch((err) => {
           const { data } = err;
           setError(data);
-        });
+          setListData([]);
+        })
+        .finally(() => setLoading(false));
     }
     return () => {
       mount = false;
     };
-  }, []);
+  }, [offset, limit]);
   return { ListData, error, loading, hasMore };
 }

@@ -20,3 +20,14 @@ export function Feeds(props: feedProps){
         contentType: 'application/json',
     })
 }
+interface articleProps {
+    slug: string
+}
+export function ArticleController(props: articleProps){
+    const { slug } = props
+    return request({
+        method: 'get',
+        url: `/api/article/${slug}`,
+        contentType: 'application/json',
+    })
+}
