@@ -13,17 +13,19 @@ import Search from "../Search/index"
 import Profile from "../Profile/Index"
 import Articles from "../Articles/Index";
 import { WhoMe } from '../../api/controller/authController';
+import { getTokenFCM } from "../../firebaseinit"
 function App() {
   const dispatch = useDispatch()
   const { CurrentUser } = bindActionCreators(actionCreators, dispatch)
   const [openSidebar, setOpenSidebar] = useState(false)
+  const [tokenFCM, setTokenFCM] = useState(null)
   const User = useSelector((state: State) => state.User)
   const { isLogin } = User
 
   const handleSidebar = () => {
     setOpenSidebar(!openSidebar)
   }
-
+  getTokenFCM(setTokenFCM)
   const getData = async() => {
     try {
       await WhoMe().then(res => {
@@ -50,7 +52,11 @@ function App() {
     return () => {
       mount = false
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogin])
+  useEffect(() => {
+    console.log(tokenFCM)
+  }, [tokenFCM])
   return (
     <Router>
       <div className="relative body-content">

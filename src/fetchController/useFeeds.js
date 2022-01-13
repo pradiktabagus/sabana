@@ -10,7 +10,7 @@ export default function useFeeds(props) {
 
   useEffect(() => {
     setListData([]);
-  }, [offset]);
+  }, []);
   useEffect(() => {
     let mount = true;
     if (mount) {
