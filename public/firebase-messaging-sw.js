@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging } from "firebase/messaging/sw";
 import { onBackgroundMessage } from "firebase/messaging/sw";
-
-var firebaseConfig = initializeApp({
+mportScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
+var firebaseConfig = {
   apiKey: "AIzaSyAt2P55ButFrNmfFvm-f_V6G9Y4CUXt-NM",
   authDomain: "sabana-d5230.firebaseapp.com",
   databaseURL: "https://sabana-d5230.firebaseio.com",
@@ -12,10 +13,11 @@ var firebaseConfig = initializeApp({
   messagingSenderId: "126788806522",
   appId: "1:126788806522:web:8ef576aa78cbd7442e98c3",
   measurementId: "G-8MMWF5T4B1",
-});
-const messaging = getMessaging(firebaseConfig);
-
-onBackgroundMessage(messaging, (payload) => {
+};
+// const messaging = getMessaging(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+messaging.onBackgroundMessage(function (payload) {
   console.log("Received background message ", payload);
 
   const notificationTitle = payload.notification.title;
